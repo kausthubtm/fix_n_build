@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+.setwidth{
+width: 100%;
+height: 100px;
+}
+.setwidth2{
+width: 200px;
+}
+
+
+
+</style>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="{% url 'mysite:home' %}"><img src="{% static 'images/logo.png' %}" height="50px" width="100px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="d-flex justify-content-center">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:home' %}" style="padding-left:380px;"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:aboutus' %}" style="padding-left:30px;"><b>ABOUT US</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:job' %}" style="padding-left:30px;"><b>JOBS</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="padding-left:30px;"><b>USER: {{request.user}}</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:logout' %}" style="padding-left:30px;"><b>LOGOUT</b><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+<br>
+<h1 style="text-align:center;"><b>Services we offer</b></h1><br>
+
+<div class="card-group">
+  <div class="card" style="background-color:black; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Electrician</h5>
+      <p class="card-text">Electricity related are handled by this department. We do works from small circuit problems, appliance maintenance to home wiring.</p>
+    </div>
+  </div>
+  <div class="card" style="background-color:DarkCyan; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Painter</h5>
+      <p class="card-text">We have the most experienced and professional painters. Both small and big contracts are accepted.</p>
+    </div>
+  </div>
+  <div class="card" style="background-color:black; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Plumber</h5>
+      <p class="card-text">Any work which come under plumbing like piping, leaks and bathroom related are handled by this department.</p>
+    </div>
+  </div>
+    <div class="card" style="background-color:DarkCyan; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Carpenter</h5>
+      <p class="card-text">This department deals with wood related work which includes flooring, furniture making, furnishing etc ...</p>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br>
+
+<center>
+  <h2><b>Please fill this form to sort out labourers according to your needs.</b></h2><br>
+</center>
+<div class="card bg-dark text-white">
+  <img class="card-img" src="{% static 'images/background2.webp' %}" alt="Card image" width="100%" height="450px">
+  <div class="card-img-overlay" style="background-color:black;"><br><br><br>
+      <h3 style="text-shadow: 2px 2px #000;font-weight: 700; color: darkcyan;text-align:center;">FORM</h3><br>
+      <form action="{% url 'mysite:profiles' %}">
+          <p class="card-text" style="text-align:center;">NOTE: We are functional only in certain cities and are planning to expand soon to others parts.</p>
+      <div class="container">
+  <div class="row">
+    <div class="col-sm"><br>
+    <h5>Please select the type:</h5>
+      <select name="type" required>
+        <option value="">---select type---</option>
+        <option>Electrician</option>
+        <option>Painter</option>
+        <option>Plumber</option>
+        <option>Carpenter</option>
+      </select>
+    </div>
+    <div class="col-sm"><br>
+       <h5>Please select a location:</h5>
+       <select name="location" required>
+        <option value="">---select location---</option>
+        <option>Bangalore</option>
+        <option>Chennai</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+       </select>
+    </div>
+    <div class="col-sm"><br>
+       <h5>Please select the wage:</h5>
+       <select name="wage" required>
+        <option value="">---select wage---</option>
+        <option>500</option>
+        <option>600</option>
+        <option>700</option>
+       </select>
+    <br><br>
+    </div>
+  </div>
+</div><br><br>
+          <div class="d-flex justify-content-center">
+              <input type="submit" value="SEARCH" style="text-align:center;">
+          </div>
+</form>
+
+  </div>
+</div>
+
+
+
+<br><br><br><br><br><br>
+<h3 style="text-align:center;"><b>Upcoming updates !!</b></h3>
+
+<div class="card-group">
+  <div class="card" style="background-color:black; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Agriculture dept.</h5>
+      <p class="card-text">This department includes agricultural workers for various agricultural jobs like planting, land-tilling ,watering  etc ....</p>
+    </div>
+  </div>
+  <div class="card" style="background-color:DarkCyan; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Medical dept.</h5>
+      <p class="card-text">This department includes home nurses, call-doctors, home delivery of medicines etc.</p>
+    </div>
+  </div>
+  <div class="card" style="background-color:black; color:white;">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center;">Home dept.</h5>
+      <p class="card-text">This department includes maids, babysitters, personal tutors and many more</p>
+    </div>
+  </div>
+</div>
+<br><br>
+
+
+<div style="background-color:lightgrey;padding-top:20px;padding-bottom:10px;">
+<h5 style="text-align:center;">For more information</h5><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <ul>
+        <li>Contact Us: +91 9843024548</li>
+        <li>Chairman: +91 9745237856</li>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <ul>
+        <li>Jobs: +91 9876967542</li>
+        <li>Investor relations: +91 9843724205</li>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <ul>
+      <li>E-mail: fix-n-build@gmail.com</li>
+      <li>Facebook: fix-n-build</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</body>
+</html>
+
+

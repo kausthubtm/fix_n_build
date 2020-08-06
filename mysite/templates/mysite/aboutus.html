@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>About Us</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+
+<style>
+.setwidth{
+width: 100%;
+}
+.setwidth2{
+width: 200px;
+}
+
+.card_me {
+background: powderblue !important;
+color: black !important;
+}
+
+
+</style>
+
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
+  <a class="navbar-brand" href="{% url 'mysite:home' %}"><img src="{% static 'images/logo.png' %}" height="50px" width="100px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="d-flex justify-content-center">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:home' %}" style="padding-left:380px;"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:aboutus' %}" style="padding-left:30px;"><b>ABOUT US</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:job' %}" style="padding-left:30px;"><b>JOBS</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="padding-left:30px;"><b>USER: {{request.user}}</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:logout' %}" style="padding-left:30px;"><b>LOGOUT</b><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+
+
+
+<div class="card bg-dark text-white">
+  <img src="{% static 'images/background3.jpg' %}" class="card-img" alt="..." height="600px" style="opacity:0.5">
+  <div class="card-img-overlay"><br><br><br><br><br><br><br><br>
+    <pre class="tab" style="text-shadow: 2px 2px #000;font-weight: 700; color: white;text-align:center;font-size:90px;font-style:italic;color: GoldenRod;">ABOUT US</pre>
+  </div>
+</div>
+
+<br>
+<div class="d-flex justify-content-center">
+<div class="jumbotron" style="width:1500px;">
+  <h1 style="text-align:center;" >ABOUT US </h1>
+  <p class="lead">
+      <h5 style="text-align:center;">MOTTO: " We are the miracle workers of your dream house. "</h5>
+      <h5 style="text-align:center;">VISION: " To provide easy access of qualified and trusted labourers to everyone. "</h5>
+  <hr class="my-4">
+  <div class="container">
+  <p><b>FIX 'n' BUILD</b> is an online platform which enables us to hire of labourers sitting at our home. The labourers
+    are selected according to field experience and through a series of screening criteria to deliver quality work.
+    This website was designed Mr Kausthub Thekke Madathil  as a
+    summer mentorship programme project for a technical club - ACM-NITK chapter.</p>
+  </div>
+</div>
+</div>
+
+
+<!--
+<div style="background:GoldenRod">
+<div class="d-flex justify-content-center" style="padding-top:15px;">
+<div class="card mb-3" style="max-width: 540px;background:DarkKhaki;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% static 'images/kausthub.jpeg' %}" class="card-img" alt="..." height="100%" width="100%">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">KAUSTHUB THEKKE MADATHIL</h5>
+        <p class="card-text">
+          <p class="card-text">Mr Kausthub Thekke Madathil is the designer and head of <b>FIX 'n' Build</b> and
+          currently pursuing his B-tech in Information Technology in NITK.</p>
+          <ul>
+          <li>Mail: kausthubtm6671@gmail.com</li>
+          <li>Instagram: <a href="https://www.instagram.com/kausthub_tm/" style="color:black;">kausthub_tm</a></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+--!>
+
+</body>
+</html>

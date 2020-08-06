@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+.setwidth{
+width: 100%;
+}
+.setwidth2{
+width: 200px;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th,td {
+  border: 1px solid black;
+  text-align:center;
+}
+
+table.table-dark {
+  table-layout:fixed;
+  width:60%;
+  margin-left:20%;
+  margin-right:20%;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="{% url 'mysite:home' %}"><img src="{% static 'images/logo.png' %}" height="50px" width="100px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="d-flex justify-content-center">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:home' %}" style="padding-left:380px;"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:aboutus' %}" style="padding-left:30px;"><b>ABOUT US</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:job' %}" style="padding-left:30px;"><b>JOBS</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="padding-left:30px;"><b>USER: {{request.user}}</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  href="{% url 'mysite:logout' %}" style="padding-left:30px;"><b>LOGOUT</b><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+<br>
+
+
+<h3 style="text-align:center;"><b>The given information is:</b></h3>
+
+<table class="table table-dark">
+  <tr>
+    <th>Criteria</th>
+    <th>Option selected</th>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td>{{type}}</td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td>{{location}}</td>
+  </tr>
+  <tr>
+    <td>Wage</td>
+    <td>{{wage}}</td>
+  </tr>
+</table>
+<br><br><br><br><br>
+
+
+<h2 style="text-align:center;"><b>Available workers matching your requirements are:</b></h2>
+<div style="background-color:black;">
+<table class="table table-hover table-dark" style="width: 100%;margin-left:0px;">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Location</th>
+    <th>Wage</th>
+    <th>Work experience</th>
+    <th>Review</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+    {% block content %}
+          {% for labourer in labourers%}
+            {% if labourer.type == type %}
+              {% if labourer.location == location %}
+                {% if labourer.wage == wage %}
+                  <tr>
+                    <td>{{labourer.name}}</td>
+                    <td>{{labourer.type}}</td>
+                    <td>{{labourer.location}}</td>
+                    <td>{{labourer.wage}}</td>
+                    <td>{{labourer.experience}}</td>
+                    <td>{{labourer.review}}</td>
+                    <td>Available</td>
+                  </tr>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+    {% endblock %}
+</table>
+<div class="container" style="color:darkcyan; background-color:black;">
+<center><br><br>
+<h2>Select the worker of your choice</h2><br>
+<form action="{% url 'mysite:conformation' %}">
+  <select name="name" required>
+    <option value="">---select person---</option>
+          {% for labourer in labourers%}
+            {% if labourer.type == type %}
+              {% if labourer.location == location %}
+                {% if labourer.wage == wage %}
+    <option>{{labourer.name}}</option>
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+  </select>
+  <input type="submit" value="Hire !" style="background-color:lightgrey;color:black"/>
+</form><br><br><br>
+</center>
+</div>
+</div>
+<br><br><br><br><br>
+</body>
+</html>
+
+
+

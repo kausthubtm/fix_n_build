@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+
+.setwidth{
+width: 100%;
+}
+.setwidth2{
+width: 200px;
+}
+
+.login_btn {
+width: 100%;
+background: black !important;
+color: yellowgreen !important;
+}
+
+
+</style>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="{% url 'mysite:home' %}"><img src="{% static 'images/logo.png' %}" height="50px" width="100px"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="d-flex justify-content-center">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:home' %}" style="padding-left:380px;"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:aboutus' %}" style="padding-left:30px;"><b>ABOUT US</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:job' %}" style="padding-left:30px;"><b>JOBS</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="padding-left:30px;"><b>USER: {{request.user}}</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'mysite:logout' %}" style="padding-left:30px;"><b>LOGOUT</b><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
+
+{% if temp == 0 %}
+<br><br>
+<h2 style="text-align:center;"><u>CONFIRMATION - PAGE</u></h2>
+<br>
+<center>
+  <h2>You have selected <b>{{worker_name}}</b></h2>
+  {% for labourer in labourers%}
+            {% if labourer.name == worker_name %}
+                <h5>Name: {{labourer.name}}</h5>
+                <h5>Type: {{labourer.type}}</h5>
+                <h5>Wage: Rs {{labourer.wage}}</h5>
+                <h5>Experience: {{labourer.experience}} years</h5>
+            {% endif %}
+  {% endfor %}
+  <br><br><br>
+  <h3>Please click on 'confirm' button to hire !</h3>
+  <a href="{% url 'mysite:hire_submission' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Confirm</a>
+  <a href="{% url 'mysite:home' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go home</a>
+</center><br><br><br>
+
+{% else %}
+<center><br><br>
+  <h2>Thank you {{request.user}} !!</h2>
+  <p>We have received your request and will contact you via email.</p>
+</center><br><br>
+{% endif %}
+
+<div style="background-color:lightgrey;padding-top:20px;padding-bottom:10px;">
+<h5 style="text-align:center;">For more information</h5><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <ul>
+        <li>Contact Us: +91 9843024548</li>
+        <li>Chairman: +91 9745237856</li>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <ul>
+        <li>Jobs: +91 9876967542</li>
+        <li>Investor relations: +91 9843724205</li>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <ul>
+      <li>E-mail: fix-n-build@gmail.com</li>
+      <li>Facebook: fix-n-build</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+
+</body>
+</html>
