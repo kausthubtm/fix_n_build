@@ -1,6 +1,7 @@
-# fix_n_build
+# FIX 'n' BUILD
 ![Screenshot](frontpage.png)
-Fix-n-build is a online platform to hire workers (carpenters, plumbers, painters etc..). It is a website built using django framework. 
+
+Fix-n-build is a online platform to hire workers (carpenters, plumbers, painters etc..). It is a website built using django framework. This makes the tiresome processes of hiring workers a simple one where u can hire workers with just a few clicks!
 
 # Features completed
 1. User authentication and creation. (registration).
