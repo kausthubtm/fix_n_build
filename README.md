@@ -5,6 +5,7 @@ Fix-n-build is a online platform to hire workers (carpenters, plumbers, painters
 
 # Features completed
 1. User authentication and creation. (registration).
+2. Easy hiring of workers.
 2. Job application forms and storing the necessary information.
 3. Sorting workers based on location, wage and type.
 4. Sending confirmation emails whenever necessary.
