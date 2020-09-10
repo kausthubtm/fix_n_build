@@ -12,7 +12,7 @@ Fix-n-build is a online platform to hire workers (carpenters, plumbers, painters
 
 # Project set-up
 In a windows computer :
-### $ pip install virtualenv
+### '$ pip install virtualenv'
 ### $ pip install django
 ### $ activate env
 ### $ python manage.py makemigrations
